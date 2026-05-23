@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mapica — Marketing Website
 
-## Getting Started
+Premium AI startup marketing site for **Mapica**, an AI-native mobile product studio.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS 4
+- Framer Motion
+- Lucide Icons
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
+# Add your OPENAI_API_KEY to .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Mapica AI Assistant
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Click the **Mapica AI** card in the hero (or the floating button on mobile) to open the chat panel.
 
-## Learn More
+- **With `OPENAI_API_KEY`:** real-time GPT responses via `/api/chat`
+- **Without API key:** intelligent fallback answers from the built-in knowledge base
 
-To learn more about Next.js, take a look at the following resources:
+Optional env vars:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+OPENAI_API_KEY=sk-...
+OPENAI_MODEL=gpt-4o-mini   # or gpt-4o
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build
 
-## Deploy on Vercel
+```bash
+npm run build
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/              # Layout, page, global styles
+├── components/
+│   ├── layout/       # Navbar, Footer
+│   ├── sections/     # Page sections (Hero, Products, Booking, etc.)
+│   ├── ui/           # Reusable UI primitives
+│   └── visuals/      # Phone mockups, orbs, particles
+└── lib/              # Data & utilities
+```
+
+## Sections
+
+1. Navbar — sticky glass navigation
+2. Hero — cinematic intro with phone mockups
+3. Stats — believable capability metrics
+4. Products — 6 AI product showcase cards
+5. Services — 6 solution cards
+6. Process — 4-step timeline
+7. Stack — tech ecosystem grid
+8. Vision — founder quote with particles
+9. Booking — calendar + contact form
+10. Journal — build-in-public cards
+11. CTA — final conversion block
+12. Footer — multi-column links
