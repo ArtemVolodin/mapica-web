@@ -12,22 +12,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mapica.io";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Mapica — AI-Powered Mobile Product Studio",
   description:
-    "Mapica designs and launches iPhone, Android and web products using AI, Flutter, Figma and modern automation workflows.",
+    "Mapica builds AI-powered mobile apps, MVPs, AI agents and automation systems for startups and modern businesses.",
   keywords: [
-    "AI apps",
-    "mobile development",
-    "Flutter",
-    "startup MVP",
+    "AI mobile apps",
+    "AI MVP",
+    "Flutter development",
     "AI agents",
+    "startup MVP",
+    "mobile product studio",
+    "OpenAI",
+    "Claude",
+    "automation",
   ],
   openGraph: {
     title: "Mapica — AI-Powered Mobile Product Studio",
     description:
-      "We build AI-powered mobile products. From idea to App Store in weeks.",
+      "Mapica builds AI-powered mobile apps, MVPs, AI agents and automation systems for startups and modern businesses.",
+    siteName: "Mapica",
     type: "website",
+    url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mapica — AI-Powered Mobile Product Studio",
+    description:
+      "Mapica builds AI-powered mobile apps, MVPs, AI agents and automation systems for startups and modern businesses.",
   },
   icons: {
     icon: "/mapica-logo.png",

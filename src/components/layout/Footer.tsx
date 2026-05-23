@@ -3,7 +3,7 @@ import { footerLinks } from "@/lib/data";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-[#020206]">
+    <footer id="footer" className="relative border-t border-white/5 bg-[#020206]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8">
@@ -12,9 +12,15 @@ export function Footer() {
             <p className="mt-4 text-sm text-zinc-500 max-w-xs leading-relaxed">
               AI-native mobile product studio. Design → AI → App Store.
             </p>
-            <p className="mt-6 text-xs font-medium tracking-widest uppercase text-zinc-600">
+            <p className="mt-4 text-xs font-medium tracking-widest uppercase text-zinc-600">
               Design → AI → App Store
             </p>
+            <a
+              href="https://mapica.io"
+              className="mt-3 inline-block text-sm text-blue-400/90 hover:text-blue-300 transition-colors"
+            >
+              mapica.io
+            </a>
           </div>
 
           <div>
@@ -41,20 +47,12 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {footerLinks.company.map((item) => (
-                <li key={item}>
+                <li key={item.label}>
                   <a
-                    href={
-                      item === "Process"
-                        ? "#process"
-                        : item === "Journal"
-                          ? "#journal"
-                          : item === "Contact"
-                            ? "#contact"
-                            : "#"
-                    }
+                    href={item.href}
                     className="text-sm text-zinc-400 hover:text-white transition-colors"
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
@@ -104,7 +102,10 @@ export function Footer() {
           <p className="text-xs text-zinc-600">
             © {new Date().getFullYear()} Mapica. All rights reserved.
           </p>
-          <p className="text-xs text-zinc-600">Paris</p>
+          <div className="text-xs text-zinc-600 text-center sm:text-right">
+            <p>Paris, France</p>
+            <p className="text-zinc-500">Building globally</p>
+          </div>
         </div>
       </div>
     </footer>

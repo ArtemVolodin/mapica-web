@@ -6,7 +6,7 @@ import { processSteps } from "@/lib/data";
 
 export function Process() {
   return (
-    <section id="process" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="process" className="relative py-24 md:py-32 overflow-hidden scroll-mt-section">
       <div className="absolute inset-0 bg-gradient-to-b from-violet-950/10 via-transparent to-transparent pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader

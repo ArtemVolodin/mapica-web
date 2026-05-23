@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { GradientOrb } from "@/components/visuals/GradientOrb";
+import { scrollToSection } from "@/lib/scroll";
 
 export function CTA() {
   return (
@@ -27,11 +28,11 @@ export function CTA() {
             Android or web.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="#contact" size="lg">
+            <Button href="#contact" size="lg" onClick={() => scrollToSection("contact")}>
               Book Intro Call
               <ArrowRight size={18} />
             </Button>
-            <Button href="#products" variant="secondary" size="lg">
+            <Button href="#demo-lab" variant="secondary" size="lg" onClick={() => scrollToSection("demo-lab")}>
               <Play size={16} className="fill-current" />
               View Demos
             </Button>

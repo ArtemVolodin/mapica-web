@@ -9,7 +9,8 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { Send, X } from "lucide-react";
+import { RotateCcw, Send, X } from "lucide-react";
+import { scrollToSection } from "@/lib/scroll";
 import { useAIAssistant } from "./AIAssistantProvider";
 import { MessageBubble } from "./MessageBubble";
 import { TypingIndicator } from "./TypingIndicator";
@@ -93,8 +94,13 @@ export function AIAssistantPanel() {
       setMessages(nextMessages);
       setIsLoading(true);
 
-      if (trimmed.toLowerCase().includes("book a call")) {
+      const lower = trimmed.toLowerCase();
+      if (lower.includes("book a call") || lower === "book a call") {
         handleBookCall();
+      }
+      if (lower.includes("demo lab") || lower.includes("show me the demo")) {
+        close();
+        setTimeout(() => scrollToSection("demo-lab"), 350);
       }
 
       try {
@@ -132,10 +138,18 @@ export function AIAssistantPanel() {
 
   const handleBookCall = () => {
     close();
-    setTimeout(() => {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-    }, 350);
+    setTimeout(() => scrollToSection("contact"), 350);
   };
+
+  const clearChat = () => {
+    setMessages([{ role: "assistant", content: GREETING }]);
+    setError(null);
+    setInput("");
+    setHasGreeted(true);
+  };
+
+  const showSuggestions =
+    messages.filter((m) => m.role === "user").length === 0 && !isLoading;
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -192,14 +206,25 @@ export function AIAssistantPanel() {
                   <p className="text-xs text-zinc-500">AI product concierge</p>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={close}
-                className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
-                aria-label="Close assistant"
-              >
-                <X size={20} />
-              </button>
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={clearChat}
+                  className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+                  aria-label="Clear chat"
+                  title="Clear chat"
+                >
+                  <RotateCcw size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={close}
+                  className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+                  aria-label="Close assistant"
+                >
+                  <X size={20} />
+                </button>
+              </div>
             </header>
 
             {/* Messages */}
@@ -228,7 +253,7 @@ export function AIAssistantPanel() {
               )}
 
               {/* Quick suggestions — only after greeting, before user sends */}
-              {messages.length === 1 && !isLoading && (
+              {showSuggestions && (
                 <motion.div
                   className="flex flex-wrap gap-2 pt-2"
                   initial={{ opacity: 0, y: 8 }}

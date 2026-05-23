@@ -6,7 +6,7 @@ import { stats } from "@/lib/data";
 
 export function Stats() {
   return (
-    <section className="relative py-20 md:py-28">
+    <section className="relative py-20 md:py-28 scroll-mt-section">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, i) => (

@@ -13,9 +13,9 @@ Ask me anything about building your product.`;
 
 export const QUICK_SUGGESTIONS = [
   "What can Mapica build?",
+  "Show me the Demo Lab",
   "How fast can you launch an MVP?",
   "What technologies do you use?",
-  "Can you build iPhone & Android apps?",
   "Book a call",
 ] as const;
 
@@ -23,6 +23,10 @@ export const SYSTEM_PROMPT = `You are Mapica AI, the concierge assistant for Map
 
 COMPANY CONTEXT:
 Mapica builds AI-powered apps, iPhone & Android apps, AI agents, automation systems, SaaS products, and startup MVPs for founders and businesses.
+
+Mapica builds travel apps, fitness apps, real estate apps, home services apps, shopping assistants, productivity tools and other mobile products.
+
+The site has a **Demo Lab** section (#demo-lab) with interactive concepts: AI Travel Planner, AI Running Coach, AI Real Estate Assistant, AI Home Services App. When users ask about demos, suggest scrolling to Demo Lab.
 
 Mapica uses: Flutter, OpenAI, Claude, Figma, Supabase, Firebase, Mapbox, Stripe, and n8n.
 
@@ -50,10 +54,12 @@ RESPONSE STYLE:
 - Be concise, smart, modern, and professional — like a startup concierge, not a generic chatbot
 - Use short paragraphs or bullet points when helpful
 - Avoid hype, robotic tone, and long essays
-- When users ask about pricing, timeline, or starting a project, suggest booking an intro call and mention they can use the booking section on the site (#contact)
-- For "Book a call" or scheduling questions, direct them to the Book Intro Call section on the website
+- When users ask about pricing or cost, explain it depends on complexity and recommend an intro call (#contact) — do not invent specific prices
+- When users ask about timelines, explain 2–4 weeks for MVP, longer for complex products
+- For "Book a call" or scheduling questions, direct them to the Book Intro Call section (#contact)
+- For demo questions, point to the Demo Lab section (#demo-lab)
 
-You only answer questions about Mapica, its services, process, technologies, and product development. If asked unrelated questions, politely redirect to how Mapica can help build their product.`;
+You only answer questions about Mapica, its services, process, technologies, demos, and product development. If asked unrelated questions, politely redirect to how Mapica can help build their product.`;
 
 export type ChatMessage = {
   role: "user" | "assistant";
@@ -143,5 +149,19 @@ export function getFallbackResponse(userMessage: string): string {
     return "Mapica is an **AI-native mobile product studio**. We help founders and businesses go from idea to App Store using Figma, Flutter, and modern AI — with premium UI and rapid execution.";
   }
 
-  return "Great question. Mapica helps founders build AI-powered mobile products — MVPs, iPhone & Android apps, agents, and SaaS — typically in 2–4 weeks.\n\nTell me more about what you're building, or ask about our stack, process, or booking a call.";
+  if (q.includes("demo") || q.includes("show me") || q.includes("lab")) {
+    return "Check out our **Demo Lab** on this page — scroll to the Demo Lab section or tap View Demos. You'll find interactive concepts: AI Travel Planner, Running Coach, Real Estate Assistant, and Home Services.\n\nEach has a Watch Demo preview and Open Concept details.";
+  }
+
+  if (
+    q.includes("travel") ||
+    q.includes("fitness") ||
+    q.includes("running") ||
+    q.includes("real estate") ||
+    q.includes("home service")
+  ) {
+    return "Yes — Mapica builds products in that space. Explore matching concepts in the **Demo Lab**, or tell me more about your idea and we can scope an MVP in 2–4 weeks.";
+  }
+
+  return "Great question. Mapica helps founders build AI-powered mobile products — MVPs, iPhone & Android apps, agents, and SaaS — typically in 2–4 weeks.\n\nAsk about our **Demo Lab**, stack, process, or book an intro call.";
 }

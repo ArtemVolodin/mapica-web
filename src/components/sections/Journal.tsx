@@ -1,14 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { journalPosts } from "@/lib/data";
+import { Button } from "@/components/ui/Button";
+import { JournalArticleModal } from "@/components/journal/JournalArticleModal";
+import { journalArticles, type JournalArticle } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Journal() {
+  const [article, setArticle] = useState<JournalArticle | null>(null);
+
   return (
-    <section id="journal" className="relative py-24 md:py-32">
+    <section id="journal" className="relative py-24 md:py-32 scroll-mt-section">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Journal"
@@ -17,10 +22,10 @@ export function Journal() {
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {journalPosts.map((post, i) => (
+          {journalArticles.map((post, i) => (
             <motion.article
-              key={post.title}
-              className="group glass rounded-2xl overflow-hidden hover:border-white/15 transition-all duration-400 cursor-pointer"
+              key={post.slug}
+              className="group glass rounded-2xl overflow-hidden hover:border-white/15 transition-all duration-400 flex flex-col"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -34,31 +39,40 @@ export function Journal() {
                 )}
               >
                 <div className="absolute inset-0 bg-[#030308]/40" />
-                <div className="absolute bottom-3 left-4 right-4">
-                  <div className="h-1 w-8 rounded bg-white/30 mb-2" />
-                  <div className="h-1 w-16 rounded bg-white/20" />
-                </div>
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-white/10 backdrop-blur border border-white/10" />
+                <span className="absolute top-3 left-3 text-[10px] font-medium px-2 py-0.5 rounded-full glass border border-white/10 text-zinc-300">
+                  {post.category}
+                </span>
               </div>
-              <div className="p-5">
+              <div className="p-5 flex flex-col flex-1">
                 <p className="text-[10px] font-medium tracking-wider uppercase text-zinc-600">
                   {post.date}
                 </p>
                 <h3 className="mt-2 text-base font-semibold text-white group-hover:text-blue-300 transition-colors leading-snug">
                   {post.title}
                 </h3>
-                <p className="mt-2 text-sm text-zinc-500 line-clamp-2 leading-relaxed">
+                <p className="mt-2 text-sm text-zinc-500 line-clamp-2 leading-relaxed flex-1">
                   {post.excerpt}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Read more
-                  <ArrowRight size={12} />
-                </span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="mt-4 !px-0 !justify-start text-blue-400 hover:text-blue-300"
+                  onClick={() => setArticle(post)}
+                >
+                  Read concept
+                  <ArrowRight size={14} />
+                </Button>
               </div>
             </motion.article>
           ))}
         </div>
       </div>
+
+      <JournalArticleModal
+        article={article}
+        open={!!article}
+        onClose={() => setArticle(null)}
+      />
     </section>
   );
 }

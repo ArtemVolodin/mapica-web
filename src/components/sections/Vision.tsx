@@ -6,7 +6,7 @@ import { GradientOrb } from "@/components/visuals/GradientOrb";
 
 export function Vision() {
   return (
-    <section className="relative py-28 md:py-40 overflow-hidden">
+    <section id="vision" className="relative py-28 md:py-40 overflow-hidden scroll-mt-section">
       <GradientOrb className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" color="violet" size="xl" />
       <Particles count={50} />
       <div className="absolute inset-0 bg-gradient-to-b from-[#030308] via-transparent to-[#030308]" />

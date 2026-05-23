@@ -6,7 +6,7 @@ import { services } from "@/lib/data";
 
 export function Services() {
   return (
-    <section id="solutions" className="relative py-24 md:py-32">
+    <section id="solutions" className="relative py-24 md:py-32 scroll-mt-section">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Solutions"

@@ -52,41 +52,48 @@ export type ProductAccent = "blue" | "violet" | "cyan" | "indigo" | "purple" | "
 export const products: {
   title: string;
   description: string;
+  valueProposition: string;
   accent: ProductAccent;
   ui: "travel" | "health" | "home" | "shop" | "estate" | "productivity";
 }[] = [
   {
     title: "AI Travel Platform",
+    valueProposition: "Plan smarter trips in minutes.",
     description: "Intelligent itineraries, live routing and conversational trip planning.",
     accent: "blue",
     ui: "travel",
   },
   {
     title: "AI Health Coach",
+    valueProposition: "Wellness that adapts to you.",
     description: "Personalized wellness insights with adaptive coaching flows.",
     accent: "violet",
     ui: "health",
   },
   {
     title: "AI Home Services App",
+    valueProposition: "Book help without the hassle.",
     description: "Smart booking, dispatch and real-time service coordination.",
     accent: "cyan",
     ui: "home",
   },
   {
     title: "AI Shopping Assistant",
+    valueProposition: "Shop with context, not clutter.",
     description: "Context-aware recommendations and seamless checkout experiences.",
     accent: "indigo",
     ui: "shop",
   },
   {
     title: "AI Real Estate Platform",
+    valueProposition: "Find the right home faster.",
     description: "Property discovery, valuations and agent workflows powered by AI.",
     accent: "purple",
     ui: "estate",
   },
   {
     title: "AI Productivity App",
+    valueProposition: "Focus and ship with AI.",
     description: "Focus tools, task intelligence and workflow automation in one app.",
     accent: "sky",
     ui: "productivity",
@@ -170,41 +177,20 @@ export const stackItems: {
   { name: "n8n", description: "Workflow automation", icon: Code2, color: "#EA4B71" },
 ];
 
-export const journalPosts = [
-  {
-    title: "Building AI-native products",
-    excerpt: "How we ship mobile apps where AI is core infrastructure, not a bolt-on feature.",
-    date: "May 2026",
-    gradient: "from-blue-600/40 via-violet-600/30 to-transparent",
-  },
-  {
-    title: "Figma to Flutter workflow",
-    excerpt: "Our design-to-code pipeline that keeps pixels perfect across iOS and Android.",
-    date: "Apr 2026",
-    gradient: "from-violet-600/40 via-fuchsia-600/30 to-transparent",
-  },
-  {
-    title: "AI product development",
-    excerpt: "Choosing models, guardrails and UX patterns that feel magical—not gimmicky.",
-    date: "Mar 2026",
-    gradient: "from-cyan-600/40 via-blue-600/30 to-transparent",
-  },
-  {
-    title: "Startup building with AI",
-    excerpt: "Lessons from launching MVPs in weeks instead of quarters with modern tooling.",
-    date: "Feb 2026",
-    gradient: "from-indigo-600/40 via-purple-600/30 to-transparent",
-  },
-];
-
 export const footerLinks = {
-  products: ["AI MVPs", "Mobile Apps", "AI Agents", "Automation"],
-  company: ["About", "Process", "Journal", "Contact"],
-  stack: ["Flutter", "OpenAI", "Claude", "Supabase"],
+  products: ["AI MVPs", "Mobile Apps", "AI Agents", "Automation", "SaaS Products"],
+  company: [
+    { label: "About", href: "#vision" },
+    { label: "Process", href: "#process" },
+    { label: "Journal", href: "#journal" },
+    { label: "Contact", href: "#contact" },
+  ],
+  stack: ["Flutter", "OpenAI", "Claude", "Supabase", "n8n"],
   social: [
     { label: "X / Twitter", href: "https://x.com/MapicaIO" },
     { label: "GitHub", href: "https://github.com/ArtemVolodin/mapica-web" },
     { label: "LinkedIn", href: "https://linkedin.com/company/mapica" },
+    { label: "Email", href: "mailto:hello@mapica.io" },
   ],
 } as const;
 

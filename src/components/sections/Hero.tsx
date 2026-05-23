@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { AIAssistantCard } from "@/components/assistant/AIAssistantCard";
 import { PhoneMockup } from "@/components/visuals/PhoneMockup";
 import { GradientOrb } from "@/components/visuals/GradientOrb";
+import { scrollToSection } from "@/lib/scroll";
 
 export function Hero() {
   return (
@@ -93,11 +94,11 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <Button href="#contact" size="lg">
+              <Button href="#contact" size="lg" onClick={() => scrollToSection("contact")}>
                 Book Intro Call
                 <ArrowRight size={18} />
               </Button>
-              <Button href="#products" variant="secondary" size="lg">
+              <Button href="#demo-lab" variant="secondary" size="lg" onClick={() => scrollToSection("demo-lab")}>
                 <Play size={16} className="fill-current" />
                 View Demos
               </Button>
