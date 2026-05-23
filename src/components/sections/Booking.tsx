@@ -20,7 +20,7 @@ export function Booking() {
         />
 
         <motion.div
-          className="glass-strong rounded-3xl overflow-hidden border border-white/10 glow-border max-w-4xl mx-auto"
+          className="rounded-3xl overflow-hidden border border-white/10 glow-border max-w-4xl mx-auto bg-[#030308] shadow-2xl shadow-black/40"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

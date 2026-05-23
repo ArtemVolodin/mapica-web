@@ -212,8 +212,25 @@ body {
   scroll-margin-top: 6rem;
 }
 
-/* Calendly iframe embed */
-iframe[title="Book a call with Mapica"] {
+/* Calendly — full-bleed dark embed, no white gutters */
+.calendly-booking {
+  background: #030308;
+  line-height: 0;
+}
+
+.calendly-booking iframe {
+  display: block;
+  width: 100%;
   color-scheme: dark;
   background: #030308;
+}
+
+.calendly-inline-widget {
+  width: 100% !important;
+  min-width: 100% !important;
+  background: #030308 !important;
+}
+
+.calendly-inline-widget iframe {
+  background: #030308 !important;
 }

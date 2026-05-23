@@ -38,9 +38,9 @@ export function CalendarEmbed({ config }: CalendarEmbedProps) {
 
   if (config.provider === "calendly") {
     return (
-      <div className="p-4 sm:p-6 md:p-8">
-        <div className="flex items-center gap-2 mb-4">
-          <Calendar size={18} className="text-blue-400" />
+      <div className="bg-[#030308]">
+        <div className="flex items-center gap-2 px-5 sm:px-6 py-4 border-b border-white/10">
+          <Calendar size={18} className="text-blue-400 shrink-0" />
           <span className="text-sm font-medium text-white">Pick a time</span>
           {!ready && (
             <span className="text-xs text-zinc-500 ml-auto animate-pulse">
@@ -49,24 +49,24 @@ export function CalendarEmbed({ config }: CalendarEmbedProps) {
           )}
         </div>
 
-        <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-[#030308] min-h-[620px] sm:min-h-[700px]">
+        <div className="calendly-booking relative w-full overflow-hidden bg-[#030308]">
           {iframeSrc ? (
             <iframe
               src={iframeSrc}
               title="Book a call with Mapica"
-              className="w-full border-0"
-              style={{ height: "700px", minHeight: "620px" }}
+              className="block w-full border-0 bg-[#030308]"
+              style={{ height: "720px", minHeight: "660px" }}
               onLoad={() => setReady(true)}
               allow="fullscreen"
             />
           ) : (
-            <div className="flex items-center justify-center h-[620px] text-zinc-500 text-sm">
+            <div className="flex items-center justify-center h-[660px] text-zinc-500 text-sm bg-[#030308]">
               Loading calendar…
             </div>
           )}
         </div>
 
-        <p className="mt-4 text-center text-xs text-zinc-600">
+        <p className="px-5 sm:px-6 py-4 border-t border-white/10 text-center text-xs text-zinc-600">
           Confirmations are sent to your email ·{" "}
           <a
             href={config.pageUrl.split("?")[0]}
@@ -108,8 +108,8 @@ function CalComEmbed({
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8">
-      <div className="flex items-center gap-2 mb-4">
+    <div className="bg-[#030308]">
+      <div className="flex items-center gap-2 px-5 sm:px-6 py-4 border-b border-white/10">
         <Calendar size={18} className="text-blue-400" />
         <span className="text-sm font-medium text-white">Pick a time</span>
         {!ready && (
@@ -125,7 +125,7 @@ function CalComEmbed({
       />
       <div
         id="mapica-cal-inline"
-        className="w-full min-h-[620px] sm:min-h-[700px] rounded-2xl overflow-hidden border border-white/5"
+        className="w-full min-h-[660px] overflow-hidden bg-[#030308]"
       />
     </div>
   );
