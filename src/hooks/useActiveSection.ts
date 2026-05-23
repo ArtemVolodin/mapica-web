@@ -24,6 +24,11 @@ export function useActiveSection() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        if (window.scrollY < 120) {
+          setActive("");
+          return;
+        }
+
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
@@ -34,8 +39,17 @@ export function useActiveSection() {
       { rootMargin: "-40% 0px -45% 0px", threshold: [0, 0.25, 0.5] }
     );
 
+    const onScroll = () => {
+      if (window.scrollY < 120) setActive("");
+    };
+
     elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return active;

@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -22,8 +23,14 @@ export function Logo({ variant = "navbar", className }: LogoProps) {
   const height = heights[variant];
   const width = Math.round(height * LOGO_ASPECT);
 
+  const scrollToTop = (e: MouseEvent) => {
+    e.preventDefault();
+    window.history.replaceState(null, "", window.location.pathname);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <a href="#" className={cn("inline-flex group", className)}>
+    <a href="/" onClick={scrollToTop} className={cn("inline-flex group", className)}>
       <motion.div
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}

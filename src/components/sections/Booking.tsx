@@ -1,16 +1,42 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CalendarEmbed } from "@/components/booking/CalendarEmbed";
+import { CalendarLoadingShell } from "@/components/booking/CalendarLoadingShell";
 import { CalendarPlaceholder } from "@/components/booking/CalendarPlaceholder";
 import { getCalendarConfig } from "@/lib/calendar-config";
 
 export function Booking() {
   const calendarConfig = getCalendarConfig();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [shouldLoadCalendar, setShouldLoadCalendar] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || !calendarConfig) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadCalendar(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px", threshold: 0.05 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [calendarConfig]);
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 scroll-mt-section">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="relative py-24 md:py-32 scroll-mt-section"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/15 via-transparent to-transparent pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -26,10 +52,12 @@ export function Booking() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {calendarConfig ? (
+          {!calendarConfig ? (
+            <CalendarPlaceholder />
+          ) : shouldLoadCalendar ? (
             <CalendarEmbed config={calendarConfig} />
           ) : (
-            <CalendarPlaceholder />
+            <CalendarLoadingShell />
           )}
         </motion.div>
 
