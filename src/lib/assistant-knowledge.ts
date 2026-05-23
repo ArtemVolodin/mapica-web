@@ -127,7 +127,7 @@ export function getFallbackResponse(userMessage: string): string {
     q.includes("services") ||
     q.includes("offer")
   ) {
-    return "Mapica builds:\n\n• **AI-powered mobile & web apps**\n• **Startup MVPs** (2–4 week launches)\n• **AI agents** & automation systems\n• **SaaS products** with auth & billing\n• **OpenAI / Claude integrations**\n\nWe handle design → AI → App Store. What kind of product are you thinking about?";
+    return "Mapica builds:\n\n• **AI-powered mobile & web apps**\n• **Startup MVPs** (2–4 week launches)\n• **AI agents** & automation systems\n• **SaaS products** with auth & billing\n• **OpenAI / Claude integrations**\n\nWhat kind of product are you thinking about?";
   }
 
   if (

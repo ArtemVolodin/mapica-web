@@ -10,10 +10,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-2">
             <Logo variant="footer" />
             <p className="mt-4 text-sm text-zinc-500 max-w-xs leading-relaxed">
-              AI-native mobile product studio. Design → AI → App Store.
-            </p>
-            <p className="mt-4 text-xs font-medium tracking-widest uppercase text-zinc-600">
-              Design → AI → App Store
+              AI-native mobile product studio.
             </p>
             <a
               href="https://mapica.io"
