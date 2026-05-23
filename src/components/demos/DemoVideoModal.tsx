@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import { Modal } from "@/components/ui/Modal";
-import { DemoMiniPreview } from "./DemoMiniPreview";
+import { DemoAnimatedPreview } from "./DemoAnimatedPreview";
+import { DEMO_SCENES } from "@/lib/demo-playback";
+import { useDemoPlayback } from "@/hooks/useDemoPlayback";
 import type { DemoConcept } from "@/lib/content";
 
 type DemoVideoModalProps = {
@@ -13,96 +15,104 @@ type DemoVideoModalProps = {
   onClose: () => void;
 };
 
-const DURATION = 20;
-
 export function DemoVideoModal({ demo, open, onClose }: DemoVideoModalProps) {
-  const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [playing, setPlaying] = useState(true);
+
+  const scenes = demo ? DEMO_SCENES[demo.id] : [];
+  const playback = useDemoPlayback(scenes, playing && open);
+  const { globalProgress, currentScene, totalDuration, sceneIndex, sceneProgress } =
+    playback;
 
   useEffect(() => {
-    if (!open) {
-      setPlaying(false);
-      setProgress(0);
-    }
+    if (open) setPlaying(true);
+    else setPlaying(false);
   }, [open]);
-
-  useEffect(() => {
-    if (!playing || !open) return;
-    const start = Date.now();
-    const tick = () => {
-      const elapsed = (Date.now() - start) / 1000;
-      const p = Math.min(elapsed / DURATION, 1);
-      setProgress(p);
-      if (p < 1) requestAnimationFrame(tick);
-      else setPlaying(false);
-    };
-    const id = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(id);
-  }, [playing, open]);
 
   if (!demo) return null;
 
+  const elapsed = Math.round(globalProgress * totalDuration);
+
   return (
-    <Modal open={open} onClose={onClose} title={demo.title} size="xl" className="!max-w-3xl">
+    <Modal open={open} onClose={onClose} title={demo.title} size="xl" className="!max-w-4xl">
       <div className="p-5 sm:p-6 space-y-5">
         <p className="text-sm text-zinc-400">{demo.description}</p>
 
-        <div className="relative rounded-2xl overflow-hidden bg-black border border-white/10 aspect-video flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/40 via-violet-950/30 to-black" />
+        <div className="relative rounded-2xl overflow-hidden bg-[#030308] border border-white/10 min-h-[420px] flex flex-col items-center justify-center py-8 px-4">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/30 via-violet-950/20 to-black pointer-events-none" />
+          <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
 
-          <motion.div
-            className="relative z-10"
-            animate={
-              playing
-                ? { y: [0, -6, 0], scale: [1, 1.02, 1] }
-                : { y: 0, scale: 1 }
-            }
-            transition={{ duration: 2, repeat: playing ? Infinity : 0 }}
+          <motion.p
+            key={currentScene.caption}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative z-10 text-sm text-blue-200/90 font-medium mb-6 text-center px-4"
           >
-            <DemoMiniPreview id={demo.id} className="w-[160px] sm:w-[180px]" />
-          </motion.div>
+            {currentScene.caption}
+          </motion.p>
 
-          {!playing && (
+          <div className="relative z-10">
+            <DemoAnimatedPreview
+              id={demo.id}
+              size="modal"
+              playing={playing && open}
+              playWhenVisible={false}
+              showSceneBadge={false}
+              playback={{
+                sceneIndex,
+                sceneProgress,
+                currentScene,
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 mt-8 flex items-center gap-3">
             <button
               type="button"
-              onClick={() => setPlaying(true)}
-              className="absolute z-20 w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"
-              aria-label="Play demo"
+              onClick={() => setPlaying((p) => !p)}
+              className="w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"
+              aria-label={playing ? "Pause demo" : "Play demo"}
             >
-              <Play size={28} className="text-white ml-1" fill="white" />
+              {playing ? (
+                <Pause size={22} className="text-white" />
+              ) : (
+                <Play size={22} className="text-white ml-0.5" fill="white" />
+              )}
             </button>
-          )}
-
-          {playing && (
-            <motion.div
-              className="absolute inset-x-8 top-8 space-y-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              {["Loading map…", "Generating route", "Adding local spots"].map((t, i) => (
-                <motion.p
-                  key={t}
-                  className="text-[10px] text-blue-200/90 glass px-2 py-1 rounded-lg inline-block"
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: progress > i * 0.25 ? 1 : 0.3, x: 0 }}
-                >
-                  {t}
-                </motion.p>
-              ))}
-            </motion.div>
-          )}
+            <div className="text-left">
+              <p className="text-xs text-zinc-400">
+                Scene {sceneIndex + 1} of {scenes.length} · {currentScene.label}
+              </p>
+              <p className="text-[10px] text-zinc-600">Product walkthrough loop</p>
+            </div>
+          </div>
         </div>
 
         <div className="space-y-2">
           <div className="flex justify-between text-xs text-zinc-500">
-            <span>{playing ? "Playing concept demo…" : "20s product walkthrough"}</span>
-            <span>{Math.round(progress * DURATION)}s / {DURATION}s</span>
+            <span>{playing ? "Playing demo…" : "Paused"}</span>
+            <span>
+              {elapsed}s / {Math.round(totalDuration)}s
+            </span>
           </div>
           <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-blue-500 to-violet-500"
-              style={{ width: `${progress * 100}%` }}
+              style={{ width: `${globalProgress * 100}%` }}
             />
+          </div>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {scenes.map((s, i) => (
+              <span
+                key={s.key}
+                className={`text-[10px] px-2 py-0.5 rounded-full border ${
+                  i === sceneIndex
+                    ? "border-blue-500/40 bg-blue-500/15 text-blue-200"
+                    : "border-white/10 text-zinc-600"
+                }`}
+              >
+                {s.label}
+              </span>
+            ))}
           </div>
         </div>
       </div>

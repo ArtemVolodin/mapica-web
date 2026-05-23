@@ -45,7 +45,11 @@ export const metadata: Metadata = {
       "Mapica builds AI-powered mobile apps, MVPs, AI agents and automation systems for startups and modern businesses.",
   },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "32x32" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.ico",
     apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
 };

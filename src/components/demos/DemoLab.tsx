@@ -58,7 +58,7 @@ export function DemoLab() {
                 <div className="flex-1 text-center sm:text-left">
                   <div className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-blue-400/90 mb-2">
                     <Sparkles size={12} />
-                    Interactive concept
+                    Live app preview
                   </div>
                   <h3 className="text-lg font-semibold text-white">{demo.title}</h3>
                   <p className="mt-2 text-sm text-zinc-500 leading-relaxed">
