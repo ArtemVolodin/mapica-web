@@ -211,3 +211,9 @@ body {
 .scroll-mt-section {
   scroll-margin-top: 6rem;
 }
+
+/* Calendly iframe embed */
+iframe[title="Book a call with Mapica"] {
+  color-scheme: dark;
+  background: #030308;
+}
