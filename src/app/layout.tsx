@@ -29,6 +29,10 @@ export const metadata: Metadata = {
       "We build AI-powered mobile products. From idea to App Store in weeks.",
     type: "website",
   },
+  icons: {
+    icon: "/mapica-logo.png",
+    apple: "/mapica-logo.png",
+  },
 };
 
 export default function RootLayout({

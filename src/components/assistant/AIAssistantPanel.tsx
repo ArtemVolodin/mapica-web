@@ -8,6 +8,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { Send, X } from "lucide-react";
 import { useAIAssistant } from "./AIAssistantProvider";
 import { MessageBubble } from "./MessageBubble";
@@ -176,8 +177,15 @@ export function AIAssistantPanel() {
             {/* Header */}
             <header className="relative flex items-center justify-between px-5 py-4 border-b border-white/10 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                  <span className="text-white text-sm">✦</span>
+                <div className="h-10 w-[60px] shrink-0 overflow-hidden rounded-xl shadow-lg shadow-blue-500/30">
+                  <Image
+                    src="/mapica-logo.png"
+                    alt=""
+                    width={60}
+                    height={40}
+                    className="h-full w-auto max-w-none object-contain object-left"
+                    unoptimized
+                  />
                 </div>
                 <div>
                   <h2 className="text-sm font-semibold text-white">{ASSISTANT_NAME}</h2>

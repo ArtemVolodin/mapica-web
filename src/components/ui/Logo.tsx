@@ -1,32 +1,44 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-export function Logo({ size = "md" }: { size?: "sm" | "md" }) {
-  const dim = size === "sm" ? 32 : 36;
+type LogoProps = {
+  variant?: "navbar" | "footer" | "icon";
+  className?: string;
+};
+
+/** Original asset: 1536×1024 */
+const LOGO_ASPECT = 1.5;
+
+const heights = {
+  navbar: 44,
+  footer: 72,
+  icon: 36,
+};
+
+export function Logo({ variant = "navbar", className }: LogoProps) {
+  const height = heights[variant];
+  const width = Math.round(height * LOGO_ASPECT);
 
   return (
-    <a href="#" className="flex items-center gap-2.5 group">
+    <a href="#" className={cn("inline-flex group", className)}>
       <motion.div
-        className="relative flex items-center justify-center rounded-xl overflow-hidden"
-        style={{ width: dim, height: dim }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-violet-600 to-cyan-400 opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        <span className="relative z-10 text-white font-bold text-lg leading-none tracking-tighter">
-          M
-        </span>
-        <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-xl" />
+        <Image
+          src="/mapica-logo.png"
+          alt="mapica — AI-powered products"
+          width={width}
+          height={height}
+          className="object-contain object-left"
+          style={{ height, width: "auto", maxHeight: height }}
+          priority={variant === "navbar"}
+          unoptimized
+        />
       </motion.div>
-      <span
-        className={`font-semibold tracking-tight text-white group-hover:text-zinc-200 transition-colors ${
-          size === "sm" ? "text-base" : "text-lg"
-        }`}
-      >
-        Mapica
-      </span>
     </a>
   );
 }

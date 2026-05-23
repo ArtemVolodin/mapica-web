@@ -202,9 +202,9 @@ export const footerLinks = {
   company: ["About", "Process", "Journal", "Contact"],
   stack: ["Flutter", "OpenAI", "Claude", "Supabase"],
   social: [
-    { label: "X / Twitter", href: "https://x.com" },
-    { label: "GitHub", href: "https://github.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "X / Twitter", href: "https://x.com/MapicaIO" },
+    { label: "GitHub", href: "https://github.com/ArtemVolodin/mapica-web" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/mapica" },
   ],
 } as const;
 

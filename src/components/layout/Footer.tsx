@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8">
           <div className="col-span-2 md:col-span-2">
-            <Logo />
+            <Logo variant="footer" />
             <p className="mt-4 text-sm text-zinc-500 max-w-xs leading-relaxed">
               AI-native mobile product studio. Design → AI → App Store.
             </p>
@@ -104,9 +104,7 @@ export function Footer() {
           <p className="text-xs text-zinc-600">
             © {new Date().getFullYear()} Mapica. All rights reserved.
           </p>
-          <p className="text-xs text-zinc-600">
-            San Francisco · Remote-first
-          </p>
+          <p className="text-xs text-zinc-600">Paris</p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 import { useAIAssistant } from "./AIAssistantProvider";
 
 export function AIAssistantCard() {
@@ -21,8 +21,15 @@ export function AIAssistantCard() {
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 via-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative flex items-center gap-2 mb-3">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-shadow">
-          <Sparkles size={14} className="text-white" />
+        <div className="h-8 w-[52px] shrink-0 overflow-hidden rounded-lg shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-shadow">
+          <Image
+            src="/mapica-logo.png"
+            alt=""
+            width={52}
+            height={32}
+            className="h-full w-auto max-w-none object-contain object-left -translate-x-0.5"
+            unoptimized
+          />
         </div>
         <div>
           <p className="text-xs font-medium text-white">Mapica AI</p>
