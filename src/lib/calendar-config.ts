@@ -10,7 +10,7 @@ export type CalendarConfig = {
 
 /** Mapica dark theme — matches site UI */
 const CALENDLY_COLORS =
-  "background_color=030308&text_color=e4e4e7&primary_color=6366f1&hide_gdpr_banner=1";
+  "background_color=030308&text_color=e4e4e7&primary_color=6366f1&hide_gdpr_banner=1&hide_event_type_details=1";
 
 function appendCalendlyTheme(url: string) {
   const sep = url.includes("?") ? "&" : "?";

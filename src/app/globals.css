@@ -212,25 +212,20 @@ body {
   scroll-margin-top: 6rem;
 }
 
-/* Calendly — full-bleed dark embed, no white gutters */
-.calendly-booking {
-  background: #030308;
+/* Calendly on dark pages: force light color-scheme on iframe to avoid white canvas */
+.calendly-booking,
+.calendly-booking .calendly-inline-widget {
+  width: 100% !important;
+  min-width: 100% !important;
+  min-height: 660px;
+  background: #030308 !important;
   line-height: 0;
 }
 
-.calendly-booking iframe {
+.calendly-booking .calendly-inline-widget iframe {
   display: block;
-  width: 100%;
-  color-scheme: dark;
-  background: #030308;
-}
-
-.calendly-inline-widget {
   width: 100% !important;
-  min-width: 100% !important;
-  background: #030308 !important;
-}
-
-.calendly-inline-widget iframe {
+  min-height: 660px;
+  color-scheme: light;
   background: #030308 !important;
 }
