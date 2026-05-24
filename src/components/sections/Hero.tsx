@@ -107,20 +107,23 @@ export function Hero() {
             </RevealItem>
           </Reveal>
 
-          <div className="relative h-[420px] sm:h-[480px] lg:h-[560px] flex items-center justify-center">
-            <HeroConnections />
-            <PhoneMockup
-              variant="hero-left"
-              className="absolute left-0 sm:left-4 top-8 z-10"
-              delay={0.4}
-              live
-            />
-            <PhoneMockup
-              variant="hero-right"
-              className="absolute right-0 sm:right-4 top-16 z-20"
-              delay={0.6}
-              live
-            />
+          <div className="relative h-[420px] sm:h-[480px] lg:h-[560px] w-full max-w-lg mx-auto lg:max-w-none">
+            {/* Phones — left/center zone; AI card floats on the right */}
+            <div className="absolute inset-y-0 left-0 right-[200px] sm:right-[216px]">
+              <HeroConnections />
+              <PhoneMockup
+                variant="hero-left"
+                className="absolute left-0 sm:left-2 lg:left-6 top-8 z-10"
+                delay={0.4}
+                live
+              />
+              <PhoneMockup
+                variant="hero-right"
+                className="absolute left-[38%] sm:left-[40%] lg:left-[36%] top-14 sm:top-16 z-20"
+                delay={0.6}
+                live
+              />
+            </div>
             <AIAssistantCard />
           </div>
         </div>

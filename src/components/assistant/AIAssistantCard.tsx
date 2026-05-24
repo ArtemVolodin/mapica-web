@@ -11,11 +11,11 @@ export function AIAssistantCard() {
     <motion.button
       type="button"
       onClick={open}
-      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 glass-strong rounded-2xl p-4 w-[200px] glow-blue hidden sm:block text-left cursor-pointer group"
+      className="absolute right-0 sm:right-1 lg:right-2 top-1/2 -translate-y-1/2 z-30 glass-strong rounded-2xl p-4 w-[188px] sm:w-[200px] glow-blue hidden sm:block text-left cursor-pointer group animate-float shadow-xl shadow-blue-500/15"
       initial={false}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.8, duration: 0.6 }}
-      whileHover={{ scale: 1.04, y: -4 }}
+      whileHover={{ scale: 1.04, x: -4 }}
       whileTap={{ scale: 0.98 }}
       aria-label="Open Mapica AI assistant"
     >
