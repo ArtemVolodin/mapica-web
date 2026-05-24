@@ -41,7 +41,7 @@ export function DemoLab() {
                 "hover:border-white/15 transition-all duration-500 shadow-lg shadow-black/20",
                 accentGlow[demo.accent]
               )}
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08 }}

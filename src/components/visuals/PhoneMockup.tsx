@@ -34,7 +34,7 @@ export function PhoneMockup({
   return (
     <motion.div
       className={cn("relative", sizes[variant], className)}
-      initial={{ opacity: 0, y: 40 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
     >

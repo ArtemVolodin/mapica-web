@@ -21,7 +21,7 @@ export function Stack() {
               <motion.div
                 key={item.name}
                 className="group relative glass rounded-2xl p-5 md:p-6 text-center hover:bg-white/[0.06] transition-all duration-300"
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={false}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}

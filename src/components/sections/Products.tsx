@@ -51,7 +51,7 @@ export function Products() {
                 "shadow-lg shadow-black/20",
                 accentGlow[product.accent]
               )}
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.08, duration: 0.5 }}

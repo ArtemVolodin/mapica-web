@@ -1,12 +1,7 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const variants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-};
 
 type FadeInProps = {
   children: React.ReactNode;
@@ -16,6 +11,7 @@ type FadeInProps = {
   once?: boolean;
 };
 
+/** Scroll reveal — SSR-safe (content visible without JS). */
 export function FadeIn({
   children,
   className,
@@ -26,10 +22,9 @@ export function FadeIn({
   return (
     <motion.div
       className={cn(className)}
-      initial="hidden"
-      whileInView="visible"
+      initial={false}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-80px" }}
-      variants={variants}
       transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}

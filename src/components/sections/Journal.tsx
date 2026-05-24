@@ -26,7 +26,7 @@ export function Journal() {
             <motion.article
               key={post.slug}
               className="group glass rounded-2xl overflow-hidden hover:border-white/15 transition-all duration-400 flex flex-col"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}

@@ -21,7 +21,7 @@ export function Services() {
               <motion.div
                 key={service.title}
                 className="group glass rounded-2xl p-6 md:p-8 hover:bg-white/[0.06] border border-white/8 hover:border-white/12 transition-all duration-400"
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}

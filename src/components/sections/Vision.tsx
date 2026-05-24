@@ -14,7 +14,7 @@ export function Vision() {
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <motion.blockquote
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.2] tracking-tight text-white"
-          initial={{ opacity: 0, y: 40 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -30,7 +30,7 @@ export function Vision() {
 
         <motion.div
           className="mt-10 flex items-center justify-center gap-4"
-          initial={{ opacity: 0 }}
+          initial={false}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}

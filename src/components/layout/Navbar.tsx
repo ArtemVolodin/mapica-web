@@ -9,7 +9,6 @@ import { navLinks } from "@/lib/data";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { scrollToSection } from "@/lib/scroll";
 import { cn } from "@/lib/utils";
-
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -42,7 +41,7 @@ export function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled ? "py-3" : "py-5"
         )}
-        initial={{ y: -100, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
