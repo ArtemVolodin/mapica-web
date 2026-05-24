@@ -371,14 +371,176 @@ body {
   border-color: rgba(59, 130, 246, 0.25);
 }
 
+/* —— AI chat FAB (2026 orbit glow) —— */
+.ai-fab {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  padding: 0;
+  background: transparent;
+  border-radius: 9999px;
+  isolation: isolate;
+  transform: scale(1);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.ai-fab:hover {
+  transform: scale(1.045);
+}
+
+.ai-fab:active {
+  transform: scale(0.985);
+  transition-duration: 0.28s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ai-fab:hover .ai-fab-glow,
+.ai-fab:hover .ai-fab-core,
+.ai-fab:hover .ai-fab-orbit {
+  animation-play-state: paused;
+}
+
+.ai-fab-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.45), transparent 68%);
+  animation: ai-fab-glow-breathe 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ai-fab:hover .ai-fab-glow {
+  opacity: 0.85;
+  transform: scale(1.1);
+}
+
+.ai-fab-orbit {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  animation: ai-fab-orbit-breathe 5.5s ease-in-out infinite;
+}
+
+.ai-fab-orbit-spin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 235deg,
+    rgba(255, 255, 255, 0.2) 258deg,
+    rgba(255, 255, 255, 1) 272deg,
+    rgba(255, 255, 255, 1) 288deg,
+    rgba(255, 255, 255, 0.35) 302deg,
+    transparent 325deg,
+    transparent 360deg
+  );
+  animation: ai-fab-orbit-spin 6s linear infinite;
+}
+
+.ai-fab-core {
+  position: absolute;
+  inset: 2.5px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2563eb 0%, #6d28d9 55%, #7c3aed 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 8px 24px -6px rgba(59, 130, 246, 0.55);
+  animation: ai-fab-core-breathe 4s ease-in-out infinite;
+  transition:
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ai-fab:hover .ai-fab-core {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 12px 32px -6px rgba(99, 102, 241, 0.65);
+}
+
+@keyframes ai-fab-orbit-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ai-fab-orbit-breathe {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ai-fab-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.38;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.62;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes ai-fab-core-breathe {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 6px 20px -8px rgba(59, 130, 246, 0.45);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      0 9px 26px -6px rgba(139, 92, 246, 0.5);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .grid-bg-animated,
   .hero-light-ray,
   .ambient-orb,
   .animate-float,
   .animate-float-delayed,
-  .footer-glow-line {
+  .footer-glow-line,
+  .ai-fab-orbit-spin,
+  .ai-fab-orbit,
+  .ai-fab-glow,
+  .ai-fab-core {
     animation: none !important;
+  }
+
+  .ai-fab-orbit {
+    opacity: 0.7;
+  }
+
+  .ai-fab,
+  .ai-fab:hover,
+  .ai-fab:active {
+    transform: none;
+    transition: none;
   }
 }
 

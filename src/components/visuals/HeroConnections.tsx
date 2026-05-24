@@ -29,7 +29,7 @@ export function HeroConnections() {
         transition={{ duration: 2.2, delay: 0.6, ease: MOTION_EASE }}
       />
       <motion.path
-        d="M420 300 Q560 280 700 300"
+        d="M400 300 L520 220"
         fill="none"
         stroke="url(#hero-conn)"
         strokeWidth="0.75"
@@ -39,8 +39,8 @@ export function HeroConnections() {
         transition={{ duration: 1.8, delay: 1.2, ease: MOTION_EASE }}
       />
       <motion.circle
-        cx="700"
-        cy="300"
+        cx="520"
+        cy="220"
         r="4"
         fill="#22d3ee"
         initial={{ opacity: 0, scale: 0 }}
