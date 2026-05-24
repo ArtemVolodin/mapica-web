@@ -3,6 +3,7 @@ import { AIAssistantFAB } from "@/components/assistant/AIAssistantFAB";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import { GlobalGrain } from "@/components/visuals/GlobalGrain";
 import { Hero } from "@/components/sections/Hero";
 import { Stats } from "@/components/sections/Stats";
 import { DemoLab } from "@/components/demos/DemoLab";
@@ -19,6 +20,7 @@ export default function Home() {
   return (
     <AIAssistantProvider>
       <AmbientBackground />
+      <GlobalGrain />
       <Navbar />
       <main>
         <Hero />

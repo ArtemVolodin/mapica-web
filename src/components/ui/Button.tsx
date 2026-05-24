@@ -33,7 +33,7 @@ export function Button({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:brightness-110 border border-white/10",
+      "btn-glow-primary bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:brightness-110 border border-white/10",
     secondary:
       "glass text-zinc-200 hover:bg-white/8 hover:border-white/15 border border-white/10",
     ghost: "text-zinc-400 hover:text-white hover:bg-white/5",

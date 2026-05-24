@@ -12,11 +12,10 @@ I can help you understand:
 Ask me anything about building your product.`;
 
 export const QUICK_SUGGESTIONS = [
-  "What can Mapica build?",
-  "Show me the Demo Lab",
-  "How fast can you launch an MVP?",
-  "What technologies do you use?",
-  "Book a call",
+  "How fast can Mapica build an MVP?",
+  "What products can you build?",
+  "Can you build AI apps?",
+  "How does the process work?",
 ] as const;
 
 export const SYSTEM_PROMPT = `You are Mapica AI, the concierge assistant for Mapica — an AI-native mobile product studio.
@@ -138,9 +137,18 @@ export function getFallbackResponse(userMessage: string): string {
   }
 
   if (
+    q.includes("ai app") ||
+    q.includes("ai apps") ||
+    q.includes("build ai")
+  ) {
+    return "Absolutely. Mapica builds **AI-native mobile apps** — chat, agents, recommendations, automation — using OpenAI and Claude, wired into Flutter with premium UX.\n\nBrowse the **Demo Lab** for live-style previews, or book an intro call to scope your idea.";
+  }
+
+  if (
     q.includes("process") ||
     q.includes("workflow") ||
-    q.includes("how do you work")
+    q.includes("how do you work") ||
+    q.includes("how does the process")
   ) {
     return "Our process is simple:\n\n**01** Idea & Strategy\n**02** Figma Prototype\n**03** AI + Flutter Build\n**04** Launch & Iterate\n\nYou get a working product fast, then we refine based on real user feedback.";
   }

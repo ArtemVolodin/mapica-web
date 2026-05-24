@@ -163,18 +163,19 @@ export const processSteps = [
 export const stackItems: {
   name: string;
   description: string;
+  useCase: string;
   icon: LucideIcon;
   color: string;
 }[] = [
-  { name: "Figma", description: "Design system & prototypes", icon: PenTool, color: "#F24E1E" },
-  { name: "Flutter", description: "Cross-platform mobile", icon: Smartphone, color: "#54C5F8" },
-  { name: "OpenAI", description: "GPT & embeddings", icon: Sparkles, color: "#10A37F" },
-  { name: "Claude", description: "Reasoning & agents", icon: Brain, color: "#D97757" },
-  { name: "Supabase", description: "Auth & database", icon: Zap, color: "#3ECF8E" },
-  { name: "Firebase", description: "Push & analytics", icon: Flame, color: "#FFCA28" },
-  { name: "Mapbox", description: "Maps & location", icon: Map, color: "#4264FB" },
-  { name: "Stripe", description: "Payments & billing", icon: CreditCard, color: "#635BFF" },
-  { name: "n8n", description: "Workflow automation", icon: Code2, color: "#EA4B71" },
+  { name: "Figma", description: "Design system & prototypes", useCase: "Product UI & design systems", icon: PenTool, color: "#F24E1E" },
+  { name: "Flutter", description: "Cross-platform mobile", useCase: "iPhone & Android apps", icon: Smartphone, color: "#54C5F8" },
+  { name: "OpenAI", description: "GPT & embeddings", useCase: "AI features & chat", icon: Sparkles, color: "#10A37F" },
+  { name: "Claude", description: "Reasoning & agents", useCase: "Workflows & agents", icon: Brain, color: "#D97757" },
+  { name: "Supabase", description: "Auth & database", useCase: "User data & realtime", icon: Zap, color: "#3ECF8E" },
+  { name: "Firebase", description: "Push & analytics", useCase: "Notifications & metrics", icon: Flame, color: "#FFCA28" },
+  { name: "Mapbox", description: "Maps & location", useCase: "Maps & routing", icon: Map, color: "#4264FB" },
+  { name: "Stripe", description: "Payments & billing", useCase: "Subscriptions & checkout", icon: CreditCard, color: "#635BFF" },
+  { name: "n8n", description: "Workflow automation", useCase: "Ops & integrations", icon: Code2, color: "#EA4B71" },
 ];
 
 export const footerLinks = {

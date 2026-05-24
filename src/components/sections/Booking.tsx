@@ -46,12 +46,14 @@ export function Booking() {
         />
 
         <motion.div
-          className="rounded-3xl overflow-hidden border border-white/10 glow-border max-w-4xl mx-auto bg-[#030308] shadow-2xl shadow-black/40"
+          className="premium-card rounded-3xl overflow-hidden border border-white/10 glow-border max-w-4xl mx-auto bg-[#030308] shadow-2xl shadow-blue-500/10"
           initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          whileHover={{ boxShadow: "0 0 60px -15px rgba(59,130,246,0.25)" }}
         >
+          <div className="premium-card-shine" />
           {!calendarConfig ? (
             <CalendarPlaceholder />
           ) : shouldLoadCalendar ? (

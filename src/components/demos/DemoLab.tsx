@@ -37,7 +37,7 @@ export function DemoLab() {
             <motion.article
               key={demo.id}
               className={cn(
-                "group glass rounded-2xl p-6 border border-white/8",
+                "group premium-card glass rounded-2xl p-6 border border-white/8",
                 "hover:border-white/15 transition-all duration-500 shadow-lg shadow-black/20",
                 accentGlow[demo.accent]
               )}
@@ -45,9 +45,10 @@ export function DemoLab() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -6, scale: 1.01 }}
             >
-              <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+              <div className="premium-card-shine" />
+              <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start relative z-10">
                 <motion.div
                   className="shrink-0"
                   whileHover={{ scale: 1.03 }}

@@ -10,9 +10,11 @@ export type DemoConcept = {
   problem: string;
   solution: string;
   features: string[];
+  targetUsers: string[];
   mvpScope: string[];
   stack: string[];
   timeline: string;
+  monetization: string[];
 };
 
 export const demos: DemoConcept[] = [
@@ -32,9 +34,11 @@ export const demos: DemoConcept[] = [
       "Local recommendations",
       "Shareable itineraries",
     ],
+    targetUsers: ["Travel startups", "D2C travel brands", "Founders validating trip products"],
     mvpScope: ["Onboarding", "AI chat planner", "Map view", "Saved trips", "Push reminders"],
     stack: ["Flutter", "Mapbox", "OpenAI", "Supabase"],
     timeline: "2–3 weeks for MVP",
+    monetization: ["Freemium itineraries", "Premium trip exports", "Affiliate bookings"],
   },
   {
     id: "running",
@@ -51,9 +55,11 @@ export const demos: DemoConcept[] = [
       "Recovery scoring",
       "Race prep modes",
     ],
+    targetUsers: ["Fitness founders", "Running communities", "Wellness apps adding AI coaching"],
     mvpScope: ["Activity tracking UI", "Weekly plan", "AI coach chat", "Progress charts"],
     stack: ["Flutter", "HealthKit / Google Fit", "OpenAI", "Firebase"],
     timeline: "3–4 weeks for MVP",
+    monetization: ["Subscription coaching", "Race prep packs", "Wearable integrations"],
   },
   {
     id: "realestate",
@@ -70,9 +76,11 @@ export const demos: DemoConcept[] = [
       "Neighborhood insights",
       "Saved homes & alerts",
     ],
+    targetUsers: ["PropTech startups", "Brokerages", "Buyers-first marketplaces"],
     mvpScope: ["Listing feed", "Map view", "AI search", "Saved properties", "Contact flow"],
     stack: ["Flutter", "Mapbox", "Claude", "Supabase", "Stripe"],
     timeline: "3–4 weeks for MVP",
+    monetization: ["Lead gen for agents", "Premium buyer insights", "SaaS for broker teams"],
   },
   {
     id: "homeservices",
@@ -89,9 +97,11 @@ export const demos: DemoConcept[] = [
       "Contractor matching",
       "Live job progress",
     ],
+    targetUsers: ["Home services marketplaces", "Contractor networks", "Property managers"],
     mvpScope: ["Category browse", "Booking flow", "Quote card", "Status tracking", "AI support"],
     stack: ["Flutter", "OpenAI", "Supabase", "Stripe", "n8n"],
     timeline: "2–4 weeks for MVP",
+    monetization: ["Booking fees", "Pro subscriptions", "Priority dispatch upsells"],
   },
 ];
 
@@ -166,6 +176,7 @@ export type JournalArticle = {
   title: string;
   excerpt: string;
   date: string;
+  readTime: string;
   category: string;
   gradient: string;
   body: string[];
@@ -173,12 +184,13 @@ export type JournalArticle = {
 
 export const journalArticles: JournalArticle[] = [
   {
-    slug: "ai-native-products",
-    title: "Building AI-native products",
+    slug: "ai-native-workflows",
+    title: "AI-native workflows for small teams",
     excerpt:
-      "How we ship mobile apps where AI is core infrastructure, not a bolt-on feature.",
+      "How lean teams wire design, AI and Flutter into one repeatable shipping loop.",
     date: "May 12, 2026",
-    category: "Product",
+    readTime: "6 min read",
+    category: "Workflow",
     gradient: "from-blue-600/40 via-violet-600/30 to-transparent",
     body: [
       "AI-native means the model, context and UX are designed together from day one—not pasted on after launch.",
@@ -188,11 +200,12 @@ export const journalArticles: JournalArticle[] = [
   },
   {
     slug: "figma-to-flutter",
-    title: "From Figma to Flutter",
+    title: "From Figma to Flutter in weeks",
     excerpt:
       "Our design-to-code pipeline that keeps pixels perfect across iOS and Android.",
     date: "Apr 3, 2026",
-    category: "Workflow",
+    readTime: "5 min read",
+    category: "Design",
     gradient: "from-violet-600/40 via-fuchsia-600/30 to-transparent",
     body: [
       "Figma prototypes set the contract: typography, spacing, motion and component states before we write Dart.",
@@ -202,10 +215,11 @@ export const journalArticles: JournalArticle[] = [
   },
   {
     slug: "faster-mvps",
-    title: "Why MVPs can now launch faster",
+    title: "Building MVPs faster in 2026",
     excerpt:
       "Modern AI tooling and cross-platform stacks compress the path from idea to App Store.",
     date: "Mar 18, 2026",
+    readTime: "4 min read",
     category: "Startups",
     gradient: "from-cyan-600/40 via-blue-600/30 to-transparent",
     body: [
@@ -215,12 +229,13 @@ export const journalArticles: JournalArticle[] = [
     ],
   },
   {
-    slug: "agents-in-mobile",
-    title: "AI agents inside mobile apps",
+    slug: "ai-assisted-product",
+    title: "AI-assisted product development",
     excerpt:
-      "Embedding agents that reason, act and integrate with your product stack—safely.",
+      "Where humans set vision—and AI accelerates design, build and iteration without chaos.",
     date: "Feb 8, 2026",
-    category: "AI",
+    readTime: "7 min read",
+    category: "Product",
     gradient: "from-indigo-600/40 via-purple-600/30 to-transparent",
     body: [
       "Agents aren't just chat bubbles—they book, summarize, route and trigger workflows via n8n, Supabase and your APIs.",

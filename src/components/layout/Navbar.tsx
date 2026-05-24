@@ -108,10 +108,11 @@ export function Navbar() {
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
-              className="absolute top-20 left-4 right-4 glass-strong rounded-2xl p-6 border border-white/10 max-h-[80vh] overflow-y-auto"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-20 left-4 right-4 glass-strong rounded-2xl p-6 border border-white/10 max-h-[80vh] overflow-y-auto shadow-2xl shadow-blue-500/10"
+              initial={{ opacity: 0, y: -24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 380, damping: 32 }}
             >
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => (

@@ -87,6 +87,45 @@ export function DemoVideoModal({ demo, open, onClose }: DemoVideoModalProps) {
           </div>
         </div>
 
+        <div className="rounded-xl glass border border-white/10 p-4 space-y-3">
+          <p className="text-[10px] uppercase tracking-wider text-zinc-500">
+            Onboarding flow
+          </p>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {["Welcome", "Permissions", "AI setup", "First action", "Done"].map(
+              (step, i) => {
+                const stepProgress = (sceneIndex + sceneProgress) / scenes.length;
+                const threshold = (i + 1) / 5;
+                const active = stepProgress >= i / 5 && stepProgress < threshold + 0.2;
+                const done = stepProgress >= threshold;
+                return (
+                  <motion.div
+                    key={step}
+                    className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border text-[10px] ${
+                      active
+                        ? "border-blue-500/40 bg-blue-500/10 text-blue-200"
+                        : done
+                          ? "border-white/10 bg-white/5 text-zinc-400"
+                          : "border-white/5 text-zinc-600"
+                    }`}
+                    animate={active ? { scale: [1, 1.02, 1] } : {}}
+                    transition={{ duration: 1.2, repeat: active ? Infinity : 0 }}
+                  >
+                    <span
+                      className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
+                        done ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10"
+                      }`}
+                    >
+                      {done ? "✓" : i + 1}
+                    </span>
+                    {step}
+                  </motion.div>
+                );
+              }
+            )}
+          </div>
+        </div>
+
         <div className="space-y-2">
           <div className="flex justify-between text-xs text-zinc-500">
             <span>{playing ? "Playing demo…" : "Paused"}</span>

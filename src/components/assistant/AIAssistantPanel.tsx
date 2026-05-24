@@ -178,10 +178,10 @@ export function AIAssistantPanel() {
               "glass-strong border-l border-white/10",
               "shadow-2xl shadow-black/50"
             )}
-            initial={{ x: "100%", opacity: 0.8 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0.8 }}
-            transition={{ type: "spring", stiffness: 320, damping: 32 }}
+            initial={{ x: "100%", opacity: 0.9, scale: 0.98 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            exit={{ x: "100%", opacity: 0.9, scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 280, damping: 30 }}
             role="dialog"
             aria-label="Mapica AI assistant"
           >
@@ -191,7 +191,20 @@ export function AIAssistantPanel() {
             {/* Header */}
             <header className="relative flex items-center justify-between px-5 py-4 border-b border-white/10 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-[60px] shrink-0 overflow-hidden rounded-xl shadow-lg shadow-blue-500/30">
+                <div className="relative h-10 w-[60px] shrink-0">
+                  <motion.div
+                    className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-blue-500/40 to-violet-500/40 blur-md -z-10"
+                    animate={{ opacity: [0.35, 0.75, 0.35], scale: [1, 1.1, 1] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    aria-hidden
+                  />
+                  <motion.div
+                    className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50 z-20"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    aria-hidden
+                  />
+                  <div className="relative h-10 w-[60px] overflow-hidden rounded-xl shadow-lg shadow-blue-500/30">
                   <Image
                     src="/mapica-logo.png"
                     alt=""
@@ -200,6 +213,7 @@ export function AIAssistantPanel() {
                     className="h-full w-auto max-w-none object-contain object-left"
                     unoptimized
                   />
+                  </div>
                 </div>
                 <div>
                   <h2 className="text-sm font-semibold text-white">{ASSISTANT_NAME}</h2>
